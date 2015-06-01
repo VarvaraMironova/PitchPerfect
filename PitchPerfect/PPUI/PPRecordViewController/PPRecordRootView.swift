@@ -9,8 +9,8 @@
 import UIKit
 
 class PPRecordRootView: UIView {
-    @IBOutlet weak var recordButton: UIButton!
-    @IBOutlet weak var microphoneImageView: UIImageView!
+    @IBOutlet weak var helpLabel            : UILabel!
+    @IBOutlet weak var recordButton         : UIButton!
     
     var stopImage : UIImage!
     var recordImage : UIImage!
@@ -25,17 +25,14 @@ class PPRecordRootView: UIView {
         
         stopImage = UIImage(named: "stop_on")
         recordImage = UIImage(named: "rec_on")
+        helpLabel.text = "To record sound, please, tap on Rec button"
         activatePlayState(false)
     }
     
     func activatePlayState(playState: Bool) {
-        var img = playState ? self.stopImage : self.recordImage;
-        recordButton.setBackgroundImage(img, forState:UIControlState.Normal);
-        
-        if (playState) {
-            UIView.animateWithDuration(0.2, animations: {
-                
-            })
-        }
+        var img = playState ? self.stopImage : self.recordImage
+        var text = playState ? "To stop recording, please, tap on Stop button" : "To record sound, please, tap on Rec button"
+        recordButton.setBackgroundImage(img, forState:UIControlState.Normal)
+        helpLabel.text = text
     }
 }

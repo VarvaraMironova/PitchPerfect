@@ -50,13 +50,26 @@
                                     <action selector="onRecordButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Puc-zm-52U"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7bq-do-0Qq">
+                                <rect key="frame" x="0.0" y="482" width="375" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Trd-em-bPn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="Kkf-dh-gO8" secondAttribute="centerY" id="7rO-AT-ikp"/>
+                            <constraint firstAttribute="trailing" secondItem="7bq-do-0Qq" secondAttribute="trailing" id="Ra4-H2-Eq9"/>
+                            <constraint firstItem="7bq-do-0Qq" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Ryc-sp-KaK"/>
+                            <constraint firstItem="7bq-do-0Qq" firstAttribute="top" secondItem="Kkf-dh-gO8" secondAttribute="bottom" constant="73" id="SuV-36-Knf"/>
                             <constraint firstAttribute="centerX" secondItem="Kkf-dh-gO8" secondAttribute="centerX" id="iun-Z7-Bs3"/>
                         </constraints>
                         <connections>
+                            <outlet property="helpLabel" destination="7bq-do-0Qq" id="UlS-A7-INE"/>
                             <outlet property="recordButton" destination="Kkf-dh-gO8" id="Ubl-0q-m6Z"/>
                         </connections>
                     </view>

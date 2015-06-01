@@ -66,24 +66,18 @@ class PPPlayViewController: UIViewController {
     @IBAction func onStopButton(sender: AnyObject) {
         rootView.deselectButton()
         
-        audioPlayer.stop()
-        audioEngine.stop()
-        audioEngine.reset()
+        stopPlaying()
     }
     
     func playAudioWithSpeed(speed : Float) {
-        audioPlayer.stop()
-        audioEngine.stop()
-        audioEngine.reset()
+        stopPlaying()
         audioPlayer.rate = speed
         audioPlayer.currentTime = 0.0
         audioPlayer.play()
     }
     
     func playAudioWithPitch(pitch : Float) {
-        audioPlayer.stop()
-        audioEngine.stop()
-        audioEngine.reset()
+        stopPlaying()
         
         var audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
@@ -99,5 +93,11 @@ class PPPlayViewController: UIViewController {
         audioEngine.startAndReturnError(nil)
         
         audioPlayerNode.play()
+    }
+    
+    func stopPlaying() {
+        audioPlayer.stop()
+        audioEngine.stop()
+        audioEngine.reset()
     }
 }
