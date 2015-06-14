@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PPRecordedAudio : NSObject {
+class PPRecordedAudio {
     
     var filePathURL : NSURL!
     var title       : NSString!
