@@ -10,10 +10,10 @@ import Foundation
 
 class PPRecordedAudio {
     
-    var filePathURL : NSURL!
-    var title       : NSString!
+    var filePathURL : URL!
+    var title       : String!
     
-    init(filePathURL:NSURL, title:NSString) {
+    init(filePathURL: URL, title: String) {
         self.filePathURL = filePathURL
         self.title = title
     }

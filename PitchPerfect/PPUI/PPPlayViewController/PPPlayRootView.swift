@@ -9,31 +9,42 @@
 import UIKit
 
 class PPPlayRootView: UIView {
-    @IBOutlet var stopButton        : UIButton!
-    @IBOutlet var snailButton       : UIButton!
-    @IBOutlet var hareButton        : UIButton!
-    @IBOutlet var chipmunkButton    : UIButton!
-    @IBOutlet var dartWaiderButton  : UIButton!
+    @IBOutlet var stopButton         : UIButton!
     
-    weak var selectedButton         : UIButton!
+    @IBOutlet var soundEffectButtons : [UIButton]!
     
-    func selectButton(button: UIButton) {
-        if (nil != selectedButton) {
-            deselectButton()
-        }
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
         
-        button.layer.borderWidth = 2.0
-        
-        var myColor : UIColor = UIColor(red: 0.5, green: 0.5, blue:0, alpha: 1.0)
-        button.layer.borderColor = (myColor).CGColor
-        
-        selectedButton = button
+        let layer = stopButton.layer
+        layer.borderWidth = 3.0
+        layer.borderColor = UIColor.black.cgColor
+        layer.masksToBounds = true
+        layer.cornerRadius = stopButton.frame.size.width / 2.0
     }
     
-    func deselectButton() {
-        if (nil != selectedButton) {
-            selectedButton.layer.borderWidth = 0.0
-            selectedButton = nil;
+    private weak var selectedButton : UIButton? {
+        willSet(aNewValue) {
+            if let aNewValue = aNewValue {
+                //deselect oldValue
+                selectedButton?.layer.borderWidth = 0.0
+                
+                //select aNewValue
+                let borderColor = UIColor.systemRed
+                aNewValue.layer.borderWidth = 3.0
+                aNewValue.layer.borderColor = borderColor.cgColor
+            }
         }
+    }
+    
+    private func buttonForSoundEffect(soundEffect : Int) -> UIButton? {
+        return soundEffectButtons.first(where: {
+            return $0.tag == soundEffect
+        })
+    }
+    
+    func selectSoundEffect(soundEffectButton: UIButton) {
+        selectedButton = soundEffectButton
     }
 }
